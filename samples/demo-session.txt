@@ -1,0 +1,43 @@
+Command: .venv/bin/python scripts/live_demo.py
+Run date: 2026-09-24
+Secrets and signed tokens are intentionally omitted.
+
+=== AUTHENTICATION FAILURE CHECK ===
+Invalid JWT: rejected by server
+=== AUTHENTICATED DISCOVERY ===
+Tools: ['query_incidents', 'get_service_status', 'update_incident_status']
+
+=== DATABASE QUERY TOOL ===
+{
+  "status": "open",
+  "count": 1,
+  "incidents": [
+    {
+      "id": "INC-1001",
+      "title": "Checkout latency elevated",
+      "status": "open",
+      "severity": "high",
+      "owner": "payments-oncall"
+    }
+  ]
+}
+
+=== INTERNAL API TOOL ===
+{
+  "service": "checkout-api",
+  "status": "degraded",
+  "latency_ms": 481
+}
+
+=== SECURITY CONTROLS ===
+JWT authentication: passed
+Tool-catalog allowlist and metadata scan: passed
+Sensitive writes require a separate, exact-action approval token
+
+=== SENSITIVE TOOL APPROVAL CHECK ===
+Mismatched approval: rejected by server
+Exact-action approval: accepted
+Status change: open -> resolved
+
+Command: .venv/bin/pytest
+Result: 10 passed

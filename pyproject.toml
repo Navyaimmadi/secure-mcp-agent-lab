@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "secure-mcp-agent-lab"
+version = "1.0.0"
+description = "Authenticated MCP client/server with prompt-injection controls and human approval"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "fastmcp>=4.0,<5",
+  "httpx>=0.28,<1",
+  "httpx2>=2.13,<3",
+  "PyJWT>=2.10,<3",
+  "python-dotenv>=1.0,<2",
+  "pydantic>=2.10,<3",
+  "socksio>=1.0,<2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0,<9",
+  "pytest-asyncio>=0.24,<2",
+]
+
+[project.scripts]
+secure-mcp-server = "secure_mcp_agent.server:main"
+secure-mcp-client = "secure_mcp_agent.client:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/secure_mcp_agent"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+asyncio_mode = "auto"
