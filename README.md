@@ -132,17 +132,6 @@ The gateway request uses the `X-SharedLLM-Key` header. The returned plan still p
 
 See [`samples/demo-session.txt`](samples/demo-session.txt) for a secret-free execution transcript. See [`docs/threat-model.md`](docs/threat-model.md) for the required threat model.
 
-## Before submission
-
-```bash
-pytest
-git status --short
-git grep -nE "sk-sharedllm-[A-Za-z0-9_-]{8,}|BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY"
-```
-
-The secret scan should return no matches. Create a **public** GitHub repository and submit only its root URL, for example:
-
-`https://github.com/Navyaimmadi/secure-mcp-agent-lab`
 
 ## Design note
 
